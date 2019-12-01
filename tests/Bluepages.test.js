@@ -36,7 +36,7 @@ test('the employee exists', async () => {
 });
 
 test('the employee does not exists', async () => {
-	const success = await bluePages.employeeExists('joe.doe@uk.ibm.com');
+	const success = await bluePages.employeeExists('joe.doe@us.ibm.com');
 	return expect(success).toBe(false);
 });
 
