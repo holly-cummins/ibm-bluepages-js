@@ -25,11 +25,6 @@ test('the result is the primary user ID of the employee', async () => {
 	return expect(data).toBe('aromeroh');
 });
 
-test('the login is successful', async () => {
-	const success = await bluePages.authenticate('aromeroh@cr.ibm.com', '*********');
-	return expect(success).toBe(true);
-});
-
 test('the employee exists', async () => {
 	const success = await bluePages.employeeExists('aromeroh@cr.ibm.com');
 	return expect(success).toBe(true);

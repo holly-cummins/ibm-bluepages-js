@@ -33,8 +33,8 @@ Or just delete the ibm-bluepages-js directory located in node_modules.
   * `Changed the profile photo endpoint for one that allows retrieving .JPG images with better quality`
   * `Added the new employeeExists() function to validate if an employee is still part of IBM`
   * `Added the new getManagerInCountryEmployees() function that allows to retrieve the in country employees of a specific manager`
-* `2.0.3 and 2.0.4`
-  * `Corrections in the documentation.`
+* `2.0.3, 2.0.4 and 2.0.5`
+  * `Documentation corrections.`
 
 <h3> Usage </h3>
 
@@ -97,7 +97,7 @@ async function doAccountAuthentication() {
 app.get('/profile', async (req, res) => {
   let photo = await bluePages.getPhotoByW3ID('aromeroh@cr.ibm.com');
 
-  res.render('home.ejs', {
+  res.render('profile.ejs', {
       photo: photo
   });
 });
