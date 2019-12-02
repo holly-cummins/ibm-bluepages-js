@@ -269,6 +269,7 @@ module.exports = {
 	getManagerUIDByEmployeeW3ID,
 	getManagerInCountryEmployees,
 	getEmployeeLocationByW3ID,
+	getEmployeeMobileByW3ID,
 	getPhoneNumberByW3ID,
 	getJobFunctionByW3ID,
 	getPhotoByW3ID,

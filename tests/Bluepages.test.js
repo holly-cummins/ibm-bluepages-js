@@ -5,17 +5,22 @@ test('the result is the full name of the employee', async () => {
 	return expect(data).toBe('Andres Alexander Romero Hernandez');
 });
 
-test('the result is an object containing employees information', async () => {
+test('the result is an object containing employee information', async () => {
 	const data = await bluePages.getEmployeeInfoByW3ID('aromeroh@cr.ibm.com');
 	return expect(data).toBeDefined();
 });
 
-test('the result is an object containing employees location', async () => {
+test('the result is an object containing employee location', async () => {
   const data = await bluePages.getEmployeeLocationByW3ID('aromeroh@cr.ibm.com');
   return expect(data).toBeDefined();
 });
 
-test('the result is an object containing employees location including the office', async () => {
+test('the result is an object containing employee mobile', async () => {
+  const data = await bluePages.getEmployeeMobileByW3ID('rod.anami@br.ibm.com');
+  return expect(data).toBeDefined();
+});
+
+test('the result is an object containing employee location including the office', async () => {
   const data = await bluePages.getEmployeeLocationByW3ID('aromeroh@cr.ibm.com');
   return expect(data).toHaveProperty('workLocation');
 });
