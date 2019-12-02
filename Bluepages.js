@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (C) 1996, 1999 International Business Machines Corporation and others. All Rights Reserved.
  * The accompanying program is provided under the terms of this ibmpublic license ("agreement").
  * Written by Andres Romero <aromeroh@cr.ibm.com>, August 2019.
@@ -72,9 +72,9 @@ async function authenticate(W3ID, password) {
 		if (dn === null) {
 			resolve(false);
 		}
-        
+
 		const uid = dn.split(/,/)[0].split(/=/)[1];
-    
+
 		const opts = {
 			filter: '(uid='+ uid +')',
 			timeLimit: 500,
@@ -116,7 +116,7 @@ async function authenticate(W3ID, password) {
 */
 async function getNameByW3ID(W3ID) {
 	const employee = await bluepagesGetEmployee(W3ID);
-	const name = getAttrValue('givenname', employee) + ' ' + getAttrValue('sn', employee); 
+	const name = getAttrValue('givenname', employee) + ' ' + getAttrValue('sn', employee);
 
 	return name;
 }
@@ -138,8 +138,8 @@ async function getPrimaryUserIdByW3ID(W3ID) {
 */
 async function getUIDByW3ID(W3ID) {
 	const employee = await bluepagesGetEmployee(W3ID);
-	const uid = getAttrValue('uid', employee); 
-    
+	const uid = getAttrValue('uid', employee);
+
 	return uid;
 }
 
@@ -153,7 +153,7 @@ async function getManagerUIDByEmployeeW3ID(W3ID) {
 	const countryCode = getAttrValue('managercountrycode', employee);
 
 	const managerUid = serialNumber + countryCode;
-    
+
 	return managerUid;
 }
 
@@ -164,7 +164,7 @@ async function getManagerUIDByEmployeeW3ID(W3ID) {
 async function getManagerInCountryEmployees(managerW3ID) {
 	const employees = await bluepagesGetMgrInCountryEmployees(managerW3ID);
 	const managerEmployees = Promise.all(employees.map(async (e) => await getEmployeeInfoByW3ID(e)));
-	
+
 	return managerEmployees;
 }
 
@@ -191,7 +191,7 @@ async function getEmployeeLocationByW3ID(W3ID) {
 async function getPhoneNumberByW3ID(W3ID) {
 	const employee = await bluepagesGetEmployee(W3ID);
 	const phoneNumber = getAttrValue('telephonenumber', employee);
-    
+
 	return phoneNumber;
 }
 
@@ -202,8 +202,19 @@ async function getPhoneNumberByW3ID(W3ID) {
 async function getJobFunctionByW3ID(W3ID) {
 	const employee = await bluepagesGetEmployee(W3ID);
 	const jobFunction = getAttrValue('jobresponsibilities', employee);
-    
+
 	return jobFunction;
+}
+
+/**
+* @param {String} W3ID
+* @returns {Promise<string>}
+*/
+async function getEmployeeMobileByW3ID(W3ID) {
+	const employee = await bluepagesGetEmployee(W3ID);
+	const mobile = getAttrValue('mobile', employee);
+
+	return mobile;
 }
 
 /**
@@ -238,7 +249,7 @@ async function getEmployeeInfoByW3ID(W3ID) {
 async function isManager(W3ID) {
 	const employee = await bluepagesGetEmployee(W3ID);
 	const flag = getAttrValue('ismanager', employee);
-    
+
 	return (flag === 'Y'); // Y: True, N: False ...
 }
 
