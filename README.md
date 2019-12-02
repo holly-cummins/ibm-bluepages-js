@@ -119,6 +119,7 @@ app.get('/profile', async (req, res) => {
 * `getManagerUIDByEmployeeW3ID(W3ID)`
 * `getManagerInCountryEmployees(managerW3ID)`
 * `getEmployeeLocationByW3ID(W3ID)`
+* `getEmployeeMobileByW3ID`
 * `getPhoneNumberByW3ID(W3ID)`
 * `getJobFunctionByW3ID(W3ID)`
 * `getPhotoByW3ID(W3ID)`
