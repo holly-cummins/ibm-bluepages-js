@@ -60,6 +60,28 @@ async function getDnByW3ID(W3ID) {
 	}
 }
 
+async function bluePagesReportsQueryByDn(dn) {
+  return fetch(urls.api + `/manager=${dn}.list/byjson`)
+    .then(res => res.text())
+    .then(str => JSON.parse(str))
+    .catch(error => console.error(`Error: ${error}`));
+}
+
+/* Converts from the LDAP search json form to more idiomatic objects */
+function objectise(json) {
+  const arrayOfAttributes = json.search.entry.map(entry => entry.attribute);
+
+  // A bit of magic which reduces type safety (we don't know if values will be arrays or not) but increases convenience (since almost all values are *not* arrays)
+  const stripArrays = value => (value.length === 1 ? value[0] : value);
+  const reducer = (acc, val) => {
+    acc[val.name] = stripArrays(val.value);
+    return acc;
+  };
+  const objects = arrayOfAttributes.map(array => array.reduce(reducer, {}));
+
+  return objects;
+}
+
 /**
 * @param {String} W3ID
 * @param {String} password
@@ -243,6 +265,60 @@ async function getEmployeeInfoByW3ID(W3ID) {
 	};
 }
 
+function flatten(items) {
+  const flat = [];
+
+  items.forEach(item => {
+    if (Array.isArray(item)) {
+      flat.push(...flatten(item));
+    } else {
+      flat.push(item);
+    }
+  });
+
+  return flat;
+}
+
+/**
+* @param {String} W3ID
+* @returns {Promise<string>}
+*/
+async function getDirectReportsByW3ID(W3ID) {
+	const dn = await getDnByW3ID(W3ID);
+	return await getDirectReportsByDn(dn);
+}
+
+async function getDirectReportsByDn(dn) {
+  const allReports = await bluePagesReportsQueryByDn(dn);
+  const json = objectise(allReports);
+
+  // Extract just a few fields of interest
+  return json.map(person => {
+    return {
+      name: person.cn,
+      dn: `uid=${person.uid},c=${person.c},ou=${person.ou},o=${person.o}`,
+      uid: person.uid,
+      mail: person.mail,
+      workLocation: person.workloc
+    };
+  });
+}
+async function getDirectAndIndirectReportsByW3ID(W3ID) {
+  const dn = await getDnByW3ID(W3ID);
+  return await getDirectAndIndirectReportsByDn(dn);
+}
+
+async function getDirectAndIndirectReportsByDn(dn) {
+  // This is only doing the in-country hierarchy; global seems to be much harder
+  // It would be nice to have an option to filter out functional and task IDs
+  const directReports = await getDirectReportsByDn(dn);
+  const recurser = async person =>
+    [person].concat(await getDirectAndIndirectReportsByDn(person.dn));
+  const recursed = await Promise.all(directReports.map(recurser));
+  const flattened = flatten(recursed);
+  return flattened;
+}
+
 /**
 * @param {String} W3ID
 * @returns {Promise<boolean>}
@@ -275,6 +351,8 @@ module.exports = {
 	getJobFunctionByW3ID,
 	getPhotoByW3ID,
 	getEmployeeInfoByW3ID,
+	getDirectAndIndirectReportsByW3ID,
+	getDirectReportsByW3ID,
 	isManager,
 	employeeExists
 };
