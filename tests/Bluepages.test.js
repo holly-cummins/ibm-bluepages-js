@@ -44,3 +44,11 @@ test('the result is a URL with a employee\'s JPG profile picture', async () => {
 	const data = await bluePages.getPhotoByW3ID('aromeroh@cr.ibm.com');
 	return expect(data).toBe('https://w3-services1.w3-969.ibm.com/myw3/unified-profile-photo/v1/image/aromeroh@cr.ibm.com?def=avatar');
 });
+
+test('the login is successful', async () => {
+	// This is a weak test, since we can't use a correct password (unless we mock), but at least it catches compilation errors
+	const success = await bluePages.authenticate(
+		"aromeroh@cr.ibm.com",
+		"nottherightpassword");
+	return expect(success).toBe(false);
+});
