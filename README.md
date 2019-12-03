@@ -1,9 +1,10 @@
 <h1> IBM Bluepages JS </h1>
-<img alt="GitHub top language" src="https://img.shields.io/github/languages/top/aromerohcr/ibm-bluepages-js">
+<img alt="David" src="https://img.shields.io/david/aromerohcr/ibm-bluepages-js">
 <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/aromerohcr/ibm-bluepages-js">
 <img alt="npm" src="https://img.shields.io/npm/dm/ibm-bluepages-js">
 <img alt="GitHub issues" src="https://img.shields.io/github/issues-raw/aromerohcr/ibm-bluepages-js">
 <img alt="NPM" src="https://img.shields.io/npm/l/ibm-bluepages-js">
+<img alt="GitHub contributors" src="https://img.shields.io/github/contributors/aromerohcr/ibm-bluepages-js?color=green">
 
 <p> This module provides a set of tools to help <b>IBM</b> Developers working on internal projects to authenticate and access directory data available on <b>IBM Bluepages</b> using Javascript Async/Await functions (promises).</p>
 
@@ -30,11 +31,14 @@ Or just delete the ibm-bluepages-js directory located in node_modules.
 * `2.0.0`
   * `Local functions update, code refactoring and patching.`
   * `Replaced "user" by "employee" in code for better understanding of the functions.`
-  * `Changed the profile photo endpoint for one that allows retrieving .JPG images with better quality`
-  * `Added the new employeeExists() function to validate if an employee is still part of IBM`
-  * `Added the new getManagerInCountryEmployees() function that allows to retrieve the in country employees of a specific manager`
+  * `Changed the profile photo endpoint for one that returns .JPG images with better quality.`
+  * `Added new function employeeExists(W3ID) to validate if an employee is still part of IBM.`
+  * `Added new function getManagerInCountryEmployees(W3ID) that allows to return the in country employees of a specific manager.`
 * `2.0.3, 2.0.4 and 2.0.5`
   * `Documentation corrections.`
+* `2.0.6`
+  * `Fixed the problem caused by DTrace dependency of ldapjs on MacOS Catalina devices.`
+  * `Added new function getEmployeeMobileByW3ID(W3ID).`
 
 <h3> Usage </h3>
 
@@ -119,7 +123,7 @@ app.get('/profile', async (req, res) => {
 * `getManagerUIDByEmployeeW3ID(W3ID)`
 * `getManagerInCountryEmployees(managerW3ID)`
 * `getEmployeeLocationByW3ID(W3ID)`
-* `getEmployeeMobileByW3ID`
+* `getEmployeeMobileByW3ID(W3ID)`
 * `getPhoneNumberByW3ID(W3ID)`
 * `getJobFunctionByW3ID(W3ID)`
 * `getPhotoByW3ID(W3ID)`
@@ -135,10 +139,10 @@ app.get('/profile', async (req, res) => {
 </ul>
 
 <h3> Contributing </h3>
-If you want to contribute to the module and make it better, your help is very welcome. You can do so submitting a <a href="https://github.com/aromerohcr/ibm-bluepages-js/pull/new/master">Pull Request</a>.
+If you want to contribute to the module and make it better, your help is very welcome. You can do so submitting a <b>Pull Request</b>.
 
 <h3> Contact Email / Slack </h3>
-Please use this email for contact if you have questions: aromeroh@cr.ibm.com
+Please use this email for contact if you have questions: <b>aromeroh@cr.ibm.com</b>
 
 <h3> License </h3>
 This project is licensed under the IBM Public License.

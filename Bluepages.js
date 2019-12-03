@@ -2,6 +2,7 @@
  * Copyright (C) 1996, 1999 International Business Machines Corporation and others. All Rights Reserved.
  * The accompanying program is provided under the terms of this ibmpublic license ("agreement").
  * Written by Andres Romero <aromeroh@cr.ibm.com>, August 2019.
+ * Contributors: Rod Anami <rod.anami@br.ibm.com>
 */
 
 const DOMParser = require('xmldom').DOMParser;
