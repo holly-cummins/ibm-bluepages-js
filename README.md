@@ -13,7 +13,7 @@
 * Node 10.x / npm v6.x
 * Python version 2.7
 
-<b>Note:</b> Depending on your Windows setup <a href="https://www.npmjs.com/package/windows-build-tools">windows-build-tools</a> may need to be installed first.
+<b>Note:</b> Depending on your Windows setup <a href="https://www.npmjs.com/package/windows-build-tools">windows-build-tools</a> may need to be installed first. Also, for MacOS users, you should have xcode-select or entire Xcode App installed.
 
 <h3> Install </h3>
 You may install the package using npm install command:
