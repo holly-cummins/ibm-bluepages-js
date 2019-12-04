@@ -43,7 +43,7 @@ Or just delete the ibm-bluepages-js directory located in node_modules.
   * `Added new function getManagerInCountryEmployees(W3ID) that allows to return the in country employees of a specific manager.`
 * `2.0.3, 2.0.4 and 2.0.5`
   * `Documentation corrections.`
-* `2.0.6 and 2.0.7`
+* `2.0.6, 2.0.7 and 2.0.8`
   * `Fixed the problem caused by DTrace dependency of ldapjs on MacOS Catalina devices.`
   * `Added new function getEmployeeMobileByW3ID(W3ID).`
   * `Documentation and other minor fixes.`
