@@ -9,10 +9,11 @@
 <p> This module provides a set of tools to help <b>IBM</b> Developers working on internal projects to authenticate and access directory data available on <b>IBM Bluepages</b> using Javascript Async/Await functions (promises).</p>
 
 <h3>Requirements (MacOS/Windows)</h3>
+
 * Node 10.x / npm v6.x
 * Python version 2.7
 
-<b>Note:</b> Depending on your Windows setup <a href="">windows-build-tools</a> may need to be installed first.
+<b>Note:</b> Depending on your Windows setup <a href="https://www.npmjs.com/package/windows-build-tools">windows-build-tools</a> may need to be installed first.
 
 <h3> Install </h3>
 You may install the package using npm install command:
