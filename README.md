@@ -8,6 +8,12 @@
 
 <p> This module provides a set of tools to help <b>IBM</b> Developers working on internal projects to authenticate and access directory data available on <b>IBM Bluepages</b> using Javascript Async/Await functions (promises).</p>
 
+<h3>Requirements (MacOS/Windows)</h3>
+* Node 10.x / npm v6.x
+* Python version 2.7
+
+<b>Note:</b> Depending on your Windows setup <a href="">windows-build-tools</a> may need to be installed first.
+
 <h3> Install </h3>
 You may install the package using npm install command:
 
@@ -36,9 +42,10 @@ Or just delete the ibm-bluepages-js directory located in node_modules.
   * `Added new function getManagerInCountryEmployees(W3ID) that allows to return the in country employees of a specific manager.`
 * `2.0.3, 2.0.4 and 2.0.5`
   * `Documentation corrections.`
-* `2.0.6`
+* `2.0.6 and 2.0.7`
   * `Fixed the problem caused by DTrace dependency of ldapjs on MacOS Catalina devices.`
   * `Added new function getEmployeeMobileByW3ID(W3ID).`
+  * `Documentation and other minor fixes.`
 
 <h3> Usage </h3>
 
